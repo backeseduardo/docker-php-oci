@@ -1,0 +1,19 @@
+version: '3'
+
+services:
+  #  oracledb:
+  #    image: wnameless/oracle-xe-11g
+  #    ports:
+  #     - "1521:1521"
+
+   php7-with-oci8:
+    #  depends_on:
+    #    - oracledb
+    #  image: adrianharabula/php7-with-oci8
+     build: .
+     environment:
+        XDEBUG_CONFIG: remote_host=host.docker.internal remote_port=9000 remote_enable=1 remote_autostart=1 remote_connect_back=1
+     volumes:
+      - ./www:/var/www/html
+     ports:
+      - "8181:80"
